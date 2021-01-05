@@ -1,0 +1,32 @@
+{
+  "name": "alterbrains/joomla3debug4",
+  "type": "library",
+  "description": "Joomla 4 debug plugin ported for Joomla 3.",
+  "keywords": [
+    "joomla",
+    "debug"
+  ],
+  "time": "2021-01-07",
+  "license": "MIT",
+  "homepage": "https://github.com/AlterBrains/joomla3debug4",
+  "support": {
+    "issues": "https://github.com/AlterBrains/joomla3debug4/issues",
+    "source": "https://github.com/AlterBrains/joomla3debug4"
+  },
+  "authors": [
+    {
+      "name": "AlterBrains",
+      "email": "alterbrains@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^7.2",
+    "maximebf/debugbar": "1.16.4"
+  },
+  "minimum-stability": "stable",
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    }
+  }
+}
