@@ -108,9 +108,10 @@ class QueryCollector extends AbstractDataCollector implements AssetProvider
 				'accumulated_duration_str' => $this->getDataFormatter()->formatDuration($this->accumulatedDuration),
 				'memory_usage_str'         => $this->getDataFormatter()->formatBytes($this->accumulatedMemory),
 				'xdebug_link'              => $this->getXdebugLinkTemplate(),
-				'root_path'                => JPATH_ROOT
+				'root_path'                => JPATH_ROOT,
 			],
-			'count'      => \count($this->queryMonitor->getLogs()),
+//			'count'      => \count($this->queryMonitor->getLogs()),
+			'count'      => sprintf('%s (%s, %s)', \count($this->queryMonitor->getLogs()), $this->getDataFormatter()->formatDuration($this->accumulatedDuration), $this->getDataFormatter()->formatBytes($this->accumulatedMemory)),
 		];
 	}
 

@@ -75,8 +75,8 @@ class SessionCollector  extends AbstractDataCollector
 				'icon' => 'key',
 				'widget' => 'PhpDebugBar.Widgets.VariableListWidget',
 				'map' => $this->name . '.data',
-				'default' => '[]'
-			]
+				'default' => '[]',
+			],
 		];
 	}
 }

@@ -125,7 +125,8 @@ class InfoCollector extends AbstractDataCollector implements AssetProvider
 
 		return [
 			'phpVersion' => PHP_VERSION,
-			'joomlaVersion' => JVERSION,
+//			'joomlaVersion' => JVERSION,
+			'joomlaVersion' => sprintf('%s: %s (%s)', JVERSION, JPATH_SITE, $_SERVER['SERVER_SOFTWARE'] ?? 'n/a'),
 			'requestId' => $this->requestId,
 //			'identity' => $this->getIdentityInfo($application->getIdentity()),
 			'identity' => $this->getIdentityInfo(\JFactory::getUser()),
@@ -174,7 +175,7 @@ class InfoCollector extends AbstractDataCollector implements AssetProvider
 	private function getResponseInfo(ResponseInterface $response): array
 	{
 		return [
-			'status_code' => $response->getStatusCode()
+			'status_code' => $response->getStatusCode(),
 		];
 	}
 

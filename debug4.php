@@ -17,6 +17,7 @@ use DebugBar\OpenHandler;
 
 //use Joomla\CMS\Application\CMSApplicationInterface;
 use Joomla\CMS\Document\HtmlDocument;
+use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Log\Log;
 use Joomla\CMS\Log\LogEntry;
 use Joomla\CMS\Plugin\CMSPlugin;
@@ -189,21 +190,41 @@ class PlgSystemDebug4 extends CMSPlugin
 			&& $this->app->input->get('plugin') === 'debug' && $this->app->input->get('group') === 'system';
 
 		$this->showLogs = (bool) $this->params->get('logs', false);
+
+		// Log deprecated class aliases
+		if ($this->showLogs && $this->app->get('log_deprecated'))
+		{
+			foreach (JLoader::getDeprecatedAliases() as $deprecation)
+			{
+				Log::add(
+					sprintf(
+						'%1$s has been aliased to %2$s and the former class name is deprecated. The alias will be removed in %3$s.',
+						$deprecation['old'],
+						$deprecation['new'],
+						$deprecation['version']
+					),
+					Log::WARNING,
+					'deprecation-notes'
+				);
+			}
+		}
 	}
 
 	/**
-	 * Add the CSS for debug.
-	 * We can't do this in the constructor because stuff breaks.
+	 * Add an assets for debugger.
 	 *
 	 * @return  void
 	 *
-	 * @since   2.5
+	 * @since   __DEPLOY_VERSION__
 	 */
-	public function onAfterDispatch()
+	public function onBeforeCompileHead()
 	{
 		// Only if debugging or language debug is enabled.
 		if ((JDEBUG || $this->debugLang) && $this->isAuthorisedDisplayDebug() && $this->app->getDocument() instanceof HtmlDocument)
 		{
+			// jQuery can be not loaded.
+			HTMLHelper::_('jquery.framework');
+
 //			// Use our own jQuery and fontawesome instead of the debug bar shipped version
 //			$assetManager = $this->app->getDocument()->getWebAssetManager();
 //			$assetManager->registerAndUseStyle(
@@ -231,24 +252,6 @@ class PlgSystemDebug4 extends CMSPlugin
 		if (JDEBUG && (int) $this->params->get('refresh_assets', 1) === 0)
 		{
 			$this->app->getDocument()->setMediaVersion(null);
-		}
-
-		// Log deprecated class aliases
-		if ($this->showLogs && $this->app->get('log_deprecated'))
-		{
-			foreach (JLoader::getDeprecatedAliases() as $deprecation)
-			{
-				Log::add(
-					sprintf(
-						'%1$s has been aliased to %2$s and the former class name is deprecated. The alias will be removed in %3$s.',
-						$deprecation['old'],
-						$deprecation['new'],
-						$deprecation['version']
-					),
-					Log::WARNING,
-					'deprecation-notes'
-				);
-			}
 		}
 	}
 
