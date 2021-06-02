@@ -2,12 +2,12 @@
 <extension type="plugin" group="system" method="upgrade">
 	<name>plg_system_debug4</name>
 	<author>AlterBrains</author>
-	<creationDate>January 2021</creationDate>
+	<creationDate>June 2021</creationDate>
 	<copyright>(C) 2006 Open Source Matters, Inc.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>alterbrains@gmail.com</authorEmail>
 	<authorUrl>www.alterbrains.com</authorUrl>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<description>PLG_DEBUG_XML_DESCRIPTION</description>
 	<namespace path="src">Joomla\Plugin\System\Debug</namespace>
 	<files>
