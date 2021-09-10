@@ -6,7 +6,7 @@
 	<copyright>(C) 2006 Open Source Matters, Inc.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>alterbrains@gmail.com</authorEmail>
-	<authorUrl>www.alterbrains.com</authorUrl>
+	<authorUrl>https://github.com/AlterBrains/joomla3debug4</authorUrl>
 	<version>1.0.1</version>
 	<description>PLG_DEBUG_XML_DESCRIPTION</description>
 	<namespace path="src">Joomla\Plugin\System\Debug</namespace>
@@ -30,7 +30,7 @@
 					type="radio"
 					label="PLG_DEBUG_FIELD_REFRESH_ASSETS_LABEL"
 					description="PLG_DEBUG_FIELD_REFRESH_ASSETS_DESC"
-					layout4="joomla.form.field.radio.switcher"
+					layout="joomla.form.field.radio.switcher" class="btn-group btn-group-yesno"
 					default="1"
 					filter="integer"
 					>
@@ -51,7 +51,7 @@
 					name="memory"
 					type="radio"
 					label="PLG_DEBUG_FIELD_MEMORY_LABEL"
-					layout4="joomla.form.field.radio.switcher"
+					layout="joomla.form.field.radio.switcher" class="btn-group btn-group-yesno"
 					default="1"
 					filter="integer"
 					>
@@ -63,7 +63,7 @@
 					name="request"
 					type="radio"
 					label="PLG_DEBUG_FIELD_REQUEST_LABEL"
-					layout4="joomla.form.field.radio.switcher"
+					layout="joomla.form.field.radio.switcher" class="btn-group btn-group-yesno"
 					default="1"
 					filter="integer"
 					>
@@ -75,7 +75,7 @@
 					name="session"
 					type="radio"
 					label="PLG_DEBUG_FIELD_SESSION_LABEL"
-					layout4="joomla.form.field.radio.switcher"
+					layout="joomla.form.field.radio.switcher" class="btn-group btn-group-yesno"
 					default="1"
 					filter="integer"
 					>
@@ -87,7 +87,7 @@
 					name="profile"
 					type="radio"
 					label="PLG_DEBUG_FIELD_PROFILING_LABEL"
-					layout4="joomla.form.field.radio.switcher"
+					layout="joomla.form.field.radio.switcher" class="btn-group btn-group-yesno"
 					default="1"
 					filter="integer"
 					>
@@ -99,7 +99,7 @@
 					name="queries"
 					type="radio"
 					label="PLG_DEBUG_FIELD_QUERIES_LABEL"
-					layout4="joomla.form.field.radio.switcher"
+					layout="joomla.form.field.radio.switcher" class="btn-group btn-group-yesno"
 					default="1"
 					filter="integer"
 					>
@@ -111,7 +111,7 @@
 					name="query_traces"
 					type="radio"
 					label="PLG_DEBUG_FIELD_QUERY_TRACES_LABEL"
-					layout4="joomla.form.field.radio.switcher"
+					layout="joomla.form.field.radio.switcher" class="btn-group btn-group-yesno"
 					default="0"
 					showon="queries:1"
 					filter="integer"
@@ -124,7 +124,7 @@
 					name="query_profiles"
 					type="radio"
 					label="PLG_DEBUG_FIELD_QUERY_PROFILES_LABEL"
-					layout4="joomla.form.field.radio.switcher"
+					layout="joomla.form.field.radio.switcher" class="btn-group btn-group-yesno"
 					default="0"
 					showon="queries:1"
 					filter="integer"
@@ -137,7 +137,7 @@
 					name="query_explains"
 					type="radio"
 					label="PLG_DEBUG_FIELD_QUERY_EXPLAINS_LABEL"
-					layout4="joomla.form.field.radio.switcher"
+					layout="joomla.form.field.radio.switcher" class="btn-group btn-group-yesno"
 					default="0"
 					showon="queries:1"
 					filter="integer"
@@ -156,7 +156,7 @@
 					name="language_errorfiles"
 					type="radio"
 					label="PLG_DEBUG_FIELD_LANGUAGE_ERRORFILES_LABEL"
-					layout4="joomla.form.field.radio.switcher"
+					layout="joomla.form.field.radio.switcher" class="btn-group btn-group-yesno"
 					default="1"
 					filter="integer"
 					>
@@ -168,7 +168,7 @@
 					name="language_files"
 					type="radio"
 					label="PLG_DEBUG_FIELD_LANGUAGE_FILES_LABEL"
-					layout4="joomla.form.field.radio.switcher"
+					layout="joomla.form.field.radio.switcher" class="btn-group btn-group-yesno"
 					default="1"
 					filter="integer"
 					>
@@ -180,7 +180,7 @@
 					name="language_strings"
 					type="radio"
 					label="PLG_DEBUG_FIELD_LANGUAGE_STRING_LABEL"
-					layout4="joomla.form.field.radio.switcher"
+					layout="joomla.form.field.radio.switcher" class="btn-group btn-group-yesno"
 					default="1"
 					filter="integer"
 					>
@@ -192,7 +192,7 @@
 					name="strip-first"
 					type="radio"
 					label="PLG_DEBUG_FIELD_STRIP_FIRST_LABEL"
-					layout4="joomla.form.field.radio.switcher"
+					layout="joomla.form.field.radio.switcher" class="btn-group btn-group-yesno"
 					default="1"
 					filter="integer"
 					>
@@ -227,7 +227,7 @@
 					name="logs"
 					type="radio"
 					label="PLG_DEBUG_FIELD_LOGS_LABEL"
-					layout4="joomla.form.field.radio.switcher"
+					layout="joomla.form.field.radio.switcher" class="btn-group btn-group-yesno"
 					default="1"
 					>
 					<option value="0">JHIDE</option>
@@ -238,7 +238,7 @@
 					name="log-deprecated-core"
 					type="radio"
 					label="PLG_DEBUG_FIELD_LOG_DEPRECATED_CORE_LABEL"
-					layout4="joomla.form.field.radio.switcher"
+					layout="joomla.form.field.radio.switcher" class="btn-group btn-group-yesno"
 					default="0"
 					filter="integer"
 					showon="logs:1"
@@ -250,4 +250,5 @@
 			</fieldset>
 		</fields>
 	</config>
+
 </extension>

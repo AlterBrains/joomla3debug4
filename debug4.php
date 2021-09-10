@@ -14,16 +14,13 @@ use DebugBar\DataCollector\MessagesCollector;
 use DebugBar\DataCollector\RequestDataCollector;
 use DebugBar\DebugBar;
 use DebugBar\OpenHandler;
-
 //use Joomla\CMS\Application\CMSApplicationInterface;
 use Joomla\CMS\Document\HtmlDocument;
-use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Log\Log;
 use Joomla\CMS\Log\LogEntry;
 use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\CMS\Session\Session;
 use Joomla\CMS\Uri\Uri;
-
 //use Joomla\Database\DatabaseDriver;
 //use Joomla\Database\Event\ConnectionEvent;
 use Joomla\Event\DispatcherInterface;
@@ -37,11 +34,16 @@ use Joomla\Plugin\System\Debug\DataCollector\SessionCollector;
 use Joomla\Plugin\System\Debug\JavascriptRenderer;
 use Joomla\Plugin\System\Debug\Storage\FileStorage;
 
-require_once __DIR__ . '/vendor/autoload.php';
+// Append own auto-loader
+/** @var Composer\Autoload\ClassLoader $loader */
+$loader = require __DIR__ . '/vendor/autoload.php';
+$loader->unregister();
+$loader->register(false);
 
 JLoader::registerNamespace('Joomla\Plugin\System\Debug\\', __DIR__ . '/src', false, false, 'psr4');
 JLoader::registerNamespace('Joomla\CMS\\', __DIR__ . '/compat', false, false, 'psr4');
 
+use Joomla\CMS\HTML\HTMLHelper;
 
 /**
  * Joomla! Debug plugin.
@@ -215,16 +217,13 @@ class PlgSystemDebug4 extends CMSPlugin
 	 *
 	 * @return  void
 	 *
-	 * @since   __DEPLOY_VERSION__
+	 * @since   4.0.0
 	 */
 	public function onBeforeCompileHead()
 	{
 		// Only if debugging or language debug is enabled.
 		if ((JDEBUG || $this->debugLang) && $this->isAuthorisedDisplayDebug() && $this->app->getDocument() instanceof HtmlDocument)
 		{
-			// jQuery can be not loaded.
-			HTMLHelper::_('jquery.framework');
-
 //			// Use our own jQuery and fontawesome instead of the debug bar shipped version
 //			$assetManager = $this->app->getDocument()->getWebAssetManager();
 //			$assetManager->registerAndUseStyle(
@@ -241,6 +240,10 @@ class PlgSystemDebug4 extends CMSPlugin
 //				['defer' => true],
 //				['jquery']
 //			);
+
+			// jQuery can be not loaded.
+			HTMLHelper::_('jquery.framework');
+
 			$document = JFactory::getDocument();
 			$document->addStyleSheet(JUri::root(true) . '/plugins/system/debug4/media/css/debug.css', ['version' => 'auto']);
 			$document->addScript(JUri::root(true) . '/plugins/system/debug4/media/js/debug.min.js', ['version' => 'auto'], ['defer' => true]);
